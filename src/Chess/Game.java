@@ -35,7 +35,7 @@ public class Game extends PApplet{
 		int x;
 		int y;
 		void display(){
-			
+			//test
 		}
 	}
 	public class Pawn extends Piece{

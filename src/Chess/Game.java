@@ -35,12 +35,67 @@ public class Game extends PApplet{
 		int x;
 		int y;
 		void display(){
-			//test
+			
 		}
 	}
 	public class Pawn extends Piece{
-		// this is a test to see if shit works
 		
+		public boolean move(boolean first, boolean capture, int x, int y){
+			if(capture){
+				if((Math.abs(this.x - x) == 1) && (Math.abs(this.y - y) == 1)) return true;
+				else {
+					return false;
+				}
+			}
+			if(Math.abs(this.y - y) == 1) return true;
+			if(Math.abs(this.y - y) == 2 && first) return true;
+			return false;
+		}
+	}
+	
+	public class Rook extends Piece{
+		public boolean move(int x, int y){
+			if(this.y != y && this.x != x) return false;
+			return true;
+		}
+	}
+	
+	public class Knight extends Piece{
+		public boolean move(int x, int y){
+			if(Math.abs(this.x - x) == 1 && Math.abs(this.y - y) == 2) return true;
+			if(Math.abs(this.x - x) == 2 && Math.abs(this.y - y) == 1) return true;
+			return false;
+		}
+	}
+	
+	public class Bishop extends Piece{
+		public boolean move(int x, int y){
+			if(Math.abs(this.x - x) == Math.abs(this.y - y)) return true;
+			return false;
+		}
+	}
+	
+	public class Queen extends Piece{
+		public boolean move(int x, int y){
+			// can move in any way but knight
+			return null;
+		}
+	}
+	
+	public class King extends Piece{
+		public boolean move(int x, int y, boolean covered){
+			// need to check if the space we are moving to is covered, if it is, we cant move there
+			if(Math.abs(this.x - x) == 1 && Math.abs(this.y - y) == 1) return true;
+			return false;
+		}
 	}
 	
 }
+
+
+
+
+
+// need to implement function to determine if a piece is blocked
+// is this.(x or y) the right way to determine the previous pos to the new pos
+

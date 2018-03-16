@@ -39,6 +39,7 @@ public class Game extends PApplet{
 		}
 	}
 	public class Pawn extends Piece{
+		// this is a test to see if shit works
 		
 	}
 	

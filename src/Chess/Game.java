@@ -1,5 +1,6 @@
 package Chess;
 import processing.core.*;
+import java.util.*;
 
 public class Game extends PApplet{
 	float xm;
@@ -51,12 +52,22 @@ public class Game extends PApplet{
 			if(Math.abs(this.y - y) == 2 && first) return true;
 			return false;
 		}
+		
+		
+		//for every piece other than the pawn, it influences the same squares
+		public [RETURN TYPE] influence(){
+			return;
+		}
 	}
 	
 	public class Rook extends Piece{
 		public boolean move(int x, int y){
 			if(this.y != y && this.x != x) return false;
 			return true;
+		}
+		
+		public [RETURN TYPE] influence(){
+			
 		}
 	}
 	
@@ -76,9 +87,10 @@ public class Game extends PApplet{
 	}
 	
 	public class Queen extends Piece{
+		//NOT FINISHED
 		public boolean move(int x, int y){
 			// can move in any way but knight
-			return null;
+			return true;
 		}
 	}
 	

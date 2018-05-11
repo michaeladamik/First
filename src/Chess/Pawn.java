@@ -15,6 +15,12 @@ public class Pawn extends Piece{
 			}
 			
 		}
-		this.rank = r;
+		else {
+			Pawn prev = new Pawn(this.phile, this.rank);
+			this.rank = r;
+			System.out.println("Moved pawn "+prev.toString()+" to "+this.toString());
+			
+		}
+		
 	}
 }

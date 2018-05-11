@@ -12,7 +12,7 @@ public class Rook extends Piece{
 		getBot(possmoves);
 		getLeft(possmoves);
 		
-		if(!possmoves.contains(new Rook(p, r))){
+		if(!has(possmoves, p, r)){
 			try {
 				throw new Exception("Invalid square for the Rook");
 			}
@@ -21,15 +21,17 @@ public class Rook extends Piece{
 			}
 		}
 		else {
+			Rook prev = new Rook(this.phile, this.rank);
 			this.phile = p;
 			this.rank = r;
+			System.out.println("Moved rook "+prev.toString()+" to "+this.toString());
 		}
 	}
 	
 
 	public void getTop(List<Piece> moves){
 		int rNum = this.rank;
-		while(rNum < 7){
+		while(rNum < 8){
 			moves.add(new Rook(this.phile, rNum + 1));
 			rNum++;
 		}
@@ -37,7 +39,7 @@ public class Rook extends Piece{
 
 	public void getRight(List<Piece> moves){
 		int pNum = PhiletoNum(this.phile);
-		while(pNum < 7){
+		while(pNum < 8){
 			moves.add(new Rook(NumtoPhile(pNum + 1), this.rank));
 			pNum++;
 		}
@@ -45,7 +47,7 @@ public class Rook extends Piece{
 
 	public void getBot(List<Piece> moves){
 		int rNum = this.rank;
-		while(rNum > 0){
+		while(rNum > 1){
 			moves.add(new Rook(this.phile, rNum - 1));
 			rNum--;
 		}
@@ -53,7 +55,7 @@ public class Rook extends Piece{
 
 	public void getLeft(List<Piece> moves){
 		int pNum = PhiletoNum(this.phile);
-		while(pNum > 0){
+		while(pNum > 1){
 			moves.add(new Rook(NumtoPhile(pNum - 1), this.rank));
 			pNum--;
 		}

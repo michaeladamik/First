@@ -26,17 +26,19 @@ public class Knight extends Piece{
 		possmoves.add(new Knight(philes[3], this.rank - 1));
 		possmoves.add(new Knight(philes[3], this.rank + 1));
 		
-		if(!possmoves.contains(new Knight(p, r))){
+		if(!has(possmoves, p, r)){
 			try{
-				throw new Exception("Invalid square for knight");
+				throw new Exception("Invalid square for knight. Knight can not go from "+this.toString()+ " to "+new Knight(p, r).toString());
 			}
 			catch(Exception e){
 				System.out.println(e.getMessage());
 			}
 		}
 		else {
+			Knight prev = new Knight(this.phile, this.rank);
 			this.phile = p;
 			this.rank = r;
+			System.out.println("Moved knight "+prev.toString()+" to "+this.toString());
 		}
 	}
 

@@ -14,7 +14,8 @@ public class Bishop extends Piece {
 		getBotLeft(possmoves);
 		getBotRight(possmoves);
 		
-		if(!possmoves.contains(new Bishop(p, r))){
+		
+		if(!has(possmoves, p, r)){
 			try{
 				throw new Exception("Invalid Square for a bishop");
 			}
@@ -23,8 +24,10 @@ public class Bishop extends Piece {
 			}
 		}
 		else {
+			Bishop prev = new Bishop(this.phile, this.rank);
 			this.phile = p;
 			this.rank = r;
+			System.out.println("Moved bishop "+prev.toString()+" to "+this.toString());
 		}
 
 	}
@@ -35,7 +38,7 @@ public class Bishop extends Piece {
 		
 		int pNum =  PhiletoNum(this.phile);
 		int rNum = this.rank;
-		while(pNum > 0 && rNum < 7){
+		while(pNum > 1 && rNum < 8){
 			moves.add(new Bishop(NumtoPhile(pNum - 1), rNum + 1));
 			pNum -= 1;
 			rNum += 1;
@@ -49,7 +52,7 @@ public class Bishop extends Piece {
 		int pNum =  PhiletoNum(this.phile);
 		int rNum = this.rank;
 		
-		while(pNum < 7 && rNum < 7){
+		while(pNum < 8 && rNum < 8){
 			moves.add(new Bishop(NumtoPhile(pNum + 1), rNum + 1));
 			pNum += 1;
 			rNum += 1;
@@ -64,7 +67,7 @@ public class Bishop extends Piece {
 		
 		int pNum =  PhiletoNum(this.phile);
 		int rNum = this.rank;
-		while(pNum > 0 && rNum > 0){
+		while(pNum > 1 && rNum > 1){
 			moves.add(new Bishop(NumtoPhile(pNum - 1), rNum - 1));
 			pNum -= 1;
 			rNum -= 1;
@@ -78,7 +81,7 @@ public class Bishop extends Piece {
 
 		int pNum =  PhiletoNum(this.phile);
 		int rNum = this.rank;
-		while(pNum < 7 && rNum > 0){
+		while(pNum < 8 && rNum > 1){
 			moves.add(new Bishop(NumtoPhile(pNum + 1), rNum - 1));
 			pNum += 1;
 			rNum -= 1;

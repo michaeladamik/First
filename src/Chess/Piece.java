@@ -15,32 +15,37 @@ public abstract class Piece {
 
 	public String NumtoPhile(int num){
 		final Map<Integer, String> NumtoPhile = new HashMap<>();
-		NumtoPhile.put(0, "a");
-		NumtoPhile.put(1, "b");
-		NumtoPhile.put(2, "c");
-		NumtoPhile.put(3, "d");
-		NumtoPhile.put(4, "e");
-		NumtoPhile.put(5, "f");
-		NumtoPhile.put(6, "g");
-		NumtoPhile.put(7, "h");
+		NumtoPhile.put(1, "a");
+		NumtoPhile.put(2, "b");
+		NumtoPhile.put(3, "c");
+		NumtoPhile.put(4, "d");
+		NumtoPhile.put(5, "e");
+		NumtoPhile.put(6, "f");
+		NumtoPhile.put(7, "g");
+		NumtoPhile.put(8, "h");
 		return NumtoPhile.get(num);
 	}
 	public int PhiletoNum(String p){
 		final Map<String, Integer> PhiletoNum = new HashMap<>();
-		PhiletoNum.put("a", 0);
-		PhiletoNum.put("b", 1);
-		PhiletoNum.put("c", 2);
-		PhiletoNum.put("d", 3);
-		PhiletoNum.put("e", 4);
-		PhiletoNum.put("f", 5);
-		PhiletoNum.put("g", 6);
-		PhiletoNum.put("h", 7);
+		PhiletoNum.put("a", 1);
+		PhiletoNum.put("b", 2);
+		PhiletoNum.put("c", 3);
+		PhiletoNum.put("d", 4);
+		PhiletoNum.put("e", 5);
+		PhiletoNum.put("f", 6);
+		PhiletoNum.put("g", 7);
+		PhiletoNum.put("h", 8);
 		return PhiletoNum.get(p);
 	}
 	
-	
+	public boolean has(List<Piece> moves, String p, int r){
+		for(Piece a : moves){
+			if(a.phile.equals(p) && a.rank == r) return true;
+		}
+		return false;
+	}
 	public String toString(){
-		return this.phile + (this.rank + 1);
+		return this.phile + (this.rank);
 	}
 }
 

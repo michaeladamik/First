@@ -1,35 +1,41 @@
 package Chess;
 import java.util.*;
-public class Bishop extends Piece {
+public class Queen extends Piece{
 
-	public Bishop(String p, int r){
+	public Queen(String p, int r){
 		super(p, r);
 	}
-
+	
 	public void move(String p, int r){
 		List<Piece> possmoves = new ArrayList<>();
 		
+		// Bishop 
 		getTopLeft(possmoves);
 		getTopRight(possmoves);
 		getBotLeft(possmoves);
 		getBotRight(possmoves);
 		
+		// Rook
+		getTop(possmoves);
+		getRight(possmoves);
+		getBot(possmoves);
+		getLeft(possmoves);
 		
 		if(!has(possmoves, p, r)){
-			try{
-				throw new Exception("Invalid Square for a bishop. Bishop can not go from "+this.toString()+ " to "+new Bishop(p, r).toString());
+			try {
+				throw new Exception("Invalid square for the Queen. Queen can not go from "+this.toString()+ " to "+new Queen(p, r).toString());
 			}
 			catch(Exception e){
 				System.out.println(e.getMessage());
 			}
 		}
 		else {
-			Bishop prev = new Bishop(this.phile, this.rank);
+			Queen prev = new Queen(this.phile, this.rank);
 			this.phile = p;
 			this.rank = r;
-			System.out.println("Moved bishop "+prev.toString()+" to "+this.toString());
+			System.out.println("Moved Queen "+prev.toString()+" to "+this.toString());
 		}
-
+		
 	}
 	
 	public void getTopLeft(List<Piece> moves){
@@ -87,8 +93,38 @@ public class Bishop extends Piece {
 			rNum -= 1;
 		}
 	}
+
+
+
+	public void getTop(List<Piece> moves){
+		int rNum = this.rank;
+		while(rNum < 8){
+			moves.add(new Rook(this.phile, rNum + 1));
+			rNum++;
+		}
+	}
+
+	public void getRight(List<Piece> moves){
+		int pNum = PhiletoNum(this.phile);
+		while(pNum < 8){
+			moves.add(new Rook(NumtoPhile(pNum + 1), this.rank));
+			pNum++;
+		}
+	}
+
+	public void getBot(List<Piece> moves){
+		int rNum = this.rank;
+		while(rNum > 1){
+			moves.add(new Rook(this.phile, rNum - 1));
+			rNum--;
+		}
+	}
+
+	public void getLeft(List<Piece> moves){
+		int pNum = PhiletoNum(this.phile);
+		while(pNum > 1){
+			moves.add(new Rook(NumtoPhile(pNum - 1), this.rank));
+			pNum--;
+		}
+	}
 }
-
-
-
-

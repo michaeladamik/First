@@ -14,7 +14,7 @@ public class Rook extends Piece{
 		
 		if(!has(possmoves, p, r)){
 			try {
-				throw new Exception("Invalid square for the Rook");
+				throw new Exception("Invalid square for the Rook. Rook can not go from "+this.toString()+ " to "+new Rook(p, r).toString());
 			}
 			catch(Exception e){
 				System.out.println(e.getMessage());

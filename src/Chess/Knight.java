@@ -10,8 +10,7 @@ public class Knight extends Piece{
 	public void move(String p, int r){
 		List<Piece> possmoves = new ArrayList<>();
 		int phileNum = PhiletoNum(this.phile);
-		System.out.println(p);
-		System.out.println("Should be 3: "+phileNum);
+		
 		String[] philes = new String[4];
 		philes[0] = NumtoPhile(phileNum - 1);
 		philes[1] = NumtoPhile(phileNum + 1);
@@ -26,10 +25,18 @@ public class Knight extends Piece{
 		possmoves.add(new Knight(philes[0], this.rank - 2));
 		possmoves.add(new Knight(philes[3], this.rank - 1));
 		possmoves.add(new Knight(philes[3], this.rank + 1));
-		System.out.println("Original spot: "+this.phile+this.rank);
-		System.out.println("Others: ");
-		for(Piece a : possmoves){
-			System.out.println(a.toString());
+		
+		if(!possmoves.contains(new Knight(p, r))){
+			try{
+				throw new Exception("Invalid square for knight");
+			}
+			catch(Exception e){
+				System.out.println(e.getMessage());
+			}
+		}
+		else {
+			this.phile = p;
+			this.rank = r;
 		}
 	}
 
